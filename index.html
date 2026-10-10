@@ -34,6 +34,9 @@ textarea{width:100%;min-height:42px;resize:vertical}
 .prog i{display:block;height:6px;background:var(--line);border-radius:3px;margin-top:4px;overflow:hidden}
 .prog b{display:block;height:100%;background:var(--ok);width:0}
 .hidden{display:none}
+h2{font-size:1.1rem;color:var(--gold);margin:22px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}
+h2:first-child{margin-top:0}
+img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;display:block}
 code{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px}
 </style>
 </head>
@@ -51,6 +54,7 @@ code{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding
     <summary>How this works (30 seconds)</summary>
     <ul>
       <li>Each box is one line of the mod menu. The English is shown above it. Type your translation underneath.</li>
+      <li>Each line has a number like <b>[12]</b>. If the mod author offers a <b>Translation Edition</b> of the mod, install it and the same numbers appear in the game menu, so you can see where each line is used. Do not translate the numbers; they are not part of the text you type.</li>
       <li>Leave a box empty to keep the English for that line. You do not have to do them all.</li>
       <li>Keep anything in angle brackets exactly as it is, for example <code>&lt;font size="16"&gt;</code>. Keep characters like <code>%</code> and <code>|</code> too.</li>
       <li>Menu space is limited. If a box shows an orange warning, your text is much longer than the English and may be cut off in game; shorten it if you can.</li>
@@ -71,13 +75,23 @@ code{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding
 <div class="card" id="rows"></div>
 
 <div class="card">
+  <h2>Official game terms (optional, but very helpful)</h2>
+  <p class="sub">If you play The Witcher 3 in your language, type the exact word the <b>game itself</b> uses for these terms (for example what Roach, the horse, is called). Only fill in what you are sure of; leave the rest empty. This keeps every translation consistent with the game.</p>
+  <div id="terms"></div>
+  <div class="bar" style="position:static;border:0;padding-bottom:0">
+    <button id="tdl">Download glossary CSV</button>
+    <button id="tcp" class="alt">Copy glossary text</button>
+  </div>
+</div>
+
+<div class="card">
   <b>Sending it back</b>
   <p id="contact"></p>
   <p class="sub">Please include the mod name and your language. If you want to be credited, say how your name should be written.</p>
 </div>
 </main>
 
-<script id="data" type="application/json">{"mods": [{"id": "BetterHorseControls", "name": "Better Horse Controls", "version": "1.3.2", "rows": [["panel_Mods", "Mods"], ["preset_Mods_betterhorsecontrols_CoreFunctions", "Preset"], ["preset_value_BhcDefault", "Default"], ["option_BhcEnabled", "Mod: Better Horse Controls <font size=\"16\">Vanilla // Better Horse Controls :<\/font>"], ["option_BhcHeading5", "BHC 1.3.2"], ["option_BhcHandsOff", "Hands-Off Riding <font size=\"16\">Pinky Rescue Off // On:<\/font>"], ["option_BhcHeading1", "Mouse & Keyboard + Controller"], ["option_BhcTapAutoCanter", "Tap Sprint to Auto-Canter: <font size=\"16\">KB: \"Gallop/Canter\"<\/font>"], ["option_BhcCtrlAutoWalk", "Press & Hold 'Walk' 0.3 s to Auto-Walk: <font size=\"16\">KB: Toggle Walk/Run<\/font>"], ["option_BhcFollowRoads", "Follow Roads at Canter and Gallop:"], ["option_BhcFollowRoadsSlow", "Follow Roads at Walk and Trot:"], ["option_BhcEndKeys", "Selected Input Acts As Hands-Off Cancel When Released <font size=\"16\">(not when pressed) :<\/font>"], ["preset_value_BhcEndKeys_0", "None"], ["preset_value_BhcEndKeys_1", "'Movement - Down'"], ["preset_value_BhcEndKeys_2", "Any 'Movement' Bind"], ["preset_value_BhcEndKeys_3", "'Movement - Up'"], ["option_BhcHeading4", "Alternative Controls"], ["option_BhcReleaseGrace", "Release Detection Grace (sec) <font size=\"16\">Repeated directional input refreshes :<\/font>"], ["option_BhcMouseSteering", "Mouse Steering / \"Comfort\" Steering <font size=\"16\">(Left-Hand-Down-Pants Steering) :<\/font>"], ["option_BhcMouseReturnTime", "Return to Follow Road After (sec) On No Input <font size=\"16\">Hold Free Look for instant road return :<\/font>"], ["option_BhcCtrlFreeLook", "Hold 'Walk': Free Look: <font size=\"16\">KB: Toggle Walk/Run<\/font>"], ["option_BhcHeading3", "Mouse & Keyboard"], ["option_BhcSepRiding", "QoL // Immersion // Optional"], ["option_BhcHoldGallop", "Hold Sprint to Gallop: (Releasing returns to prior gait):"], ["option_BhcBrake", "Brake: Hold Left Stick:"], ["option_BhcRsSlower", "Press & Hold Right Stick 0.3s : Auto-Walk / One Gait Slower"], ["option_BhcRsFullStop", "Press & Hold Right Stick 0.6s Full Slow Stop"], ["option_BhcHeading6", "Controller"], ["option_BhcLetGo", "When Grace Timer Ends, Roach:"], ["preset_value_BhcLetGo_0", "Slow Down to a Stop"], ["preset_value_BhcLetGo_1", "Stop at Once"], ["option_BhcSteerRelative", "Directional input - Roach Steers Relative to:"], ["preset_value_BhcSteerRelative_0", "Camera"], ["preset_value_BhcSteerRelative_1", "Horse"], ["option_BhcSettlementGallop", "Gallop in Settlements"], ["option_BhcSepVoice", "Geralt's Vocal Cues - \"WHOA THERE, ROACH\""], ["option_BhcVoiceFreq", "Vocal Cues Frequency <font size=\"16\">chance per start or slowdown/10s<\/font>"], ["preset_value_BhcVoiceFreq_0", "Vanilla - 100%"], ["preset_value_BhcVoiceFreq_1", "Less - 50%"], ["preset_value_BhcVoiceFreq_2", "Infrequent - 25%"], ["preset_value_BhcVoiceFreq_3", "Rare - 10%"], ["preset_value_BhcVoiceFreq_4", "Never - 0%"], ["option_BhcPromptsEnabled", "On-Screen Contextual Button Prompts:"], ["option_BhcHeading2", "Core Settings & Control"], ["panel_betterhorsecontrols", "Better Horse Controls"], ["panel_qolimmersion", "QoL & Immersion"], ["preset_Mods_betterhorsecontrols_corecontrols", "Preset"], ["preset_value_BhcKeyboard", "Keyboard"], ["preset_value_BhcController2", "Controller"], ["preset_Mods_betterhorsecontrols_roachfinetuning", "Preset"], ["preset_value_BhcVanilla", "Vanilla"], ["preset_value_BhcTiring", "Tiring"], ["preset_value_BhcHarsh", "Harsh"], ["preset_value_BhcBrutal", "Brutal"], ["panel_roachfinetuning", "Roach Finetuning"], ["option_BhcSepStamina", "Stamina"], ["option_BhcSprintDrain", "Sprint Stamina Drain (x vanilla) <font size=\"16\">1 = vanilla, 0 = infinite stamina<\/font>"], ["option_BhcRecoveryDelay", "Recovery Delay After Sprinting (sec) <font size=\"16\">1 = vanilla, delay stamina refill<\/font>"], ["option_BhcExhaustLockout", "Exhaustion Lockout (sec) <font size=\"16\">3 = vanilla<\/font>"], ["option_BhcLockoutPercent", "Lockout Ends At Stamina (%) <font size=\"16\">0 = off, turn off Lockout timer above to use this<\/font>"], ["option_BhcRecoveryRate", "Stamina Recovery Speed (x vanilla) <font size=\"16\">1 = vanilla<\/font>"], ["panel_CoreFunctions", "Core Functions"], ["panel_corecontrols", "Core Controls"], ["bhc_prompt_auto_canter", "Auto-Canter"], ["bhc_prompt_canter", "Canter"], ["bhc_prompt_gallop", "Gallop"], ["bhc_prompt_auto_walk", "Auto-Walk"], ["bhc_prompt_faster", "Faster"], ["bhc_prompt_slower", "Slower"], ["bhc_prompt_free_look", "Free Look"], ["bhc_prompt_mouse_steering", "Mouse Steering"], ["bhc_prompt_stop", "Stop"], ["bhc_prompt_full_stop", "Slow Stop"]]}, {"id": "MeasuredMeditation", "name": "Measured Meditation", "version": "1.0.0", "rows": [["panel_Mods", "Mods"], ["panel_MeasuredMeditation", "Measured Meditation"], ["preset_Mods_MeasuredMeditation", "Preset"], ["preset_value_MmDefault", "Default"], ["option_MmEnabled", "Heal on Blood and Broken Bones / Death March"], ["option_MmHealPerHour", "Health Healed per Hour Meditated (%)"]]}], "contact": "Paste the CSV text on pastebin.com (set Paste Exposure to Unlisted) and post the link as a comment on the mod's Nexus page, or attach the downloaded file there. Thank you!"}</script>
+<script id="data" type="application/json">{"mods": [{"id": "BetterHorseControls", "name": "Better Horse Controls", "version": "1.3.2", "rows": [["panel_Mods", "Mods", null], ["preset_Mods_betterhorsecontrols_CoreFunctions", "Preset", 6], ["preset_value_BhcDefault", "Default", 7], ["option_BhcEnabled", "Mod: Better Horse Controls <font size=\"16\">Vanilla // Better Horse Controls :<\/font>", 9], ["option_BhcHeading5", "BHC 1.3.2", 8], ["option_BhcHandsOff", "Hands-Off Riding <font size=\"16\">Pinky Rescue Off // On:<\/font>", 11], ["option_BhcHeading1", "Mouse & Keyboard + Controller", 20], ["option_BhcTapAutoCanter", "Tap Sprint to Auto-Canter: <font size=\"16\">KB: \"Gallop/Canter\"<\/font>", 21], ["option_BhcCtrlAutoWalk", "Press & Hold 'Walk' 0.3 s to Auto-Walk: <font size=\"16\">KB: Toggle Walk/Run<\/font>", 27], ["option_BhcFollowRoads", "Follow Roads at Canter and Gallop:", 13], ["option_BhcFollowRoadsSlow", "Follow Roads at Walk and Trot:", 14], ["option_BhcEndKeys", "Selected Input Acts As Hands-Off Cancel When Released <font size=\"16\">(not when pressed) :<\/font>", 34], ["preset_value_BhcEndKeys_0", "None", 35], ["preset_value_BhcEndKeys_1", "'Movement - Down'", 36], ["preset_value_BhcEndKeys_2", "Any 'Movement' Bind", 37], ["preset_value_BhcEndKeys_3", "'Movement - Up'", 38], ["option_BhcHeading4", "Alternative Controls", 33], ["option_BhcReleaseGrace", "Release Detection Grace (sec) <font size=\"16\">Repeated directional input refreshes :<\/font>", 39], ["option_BhcMouseSteering", "Mouse Steering / \"Comfort\" Steering <font size=\"16\">(Left-Hand-Down-Pants Steering) :<\/font>", 15], ["option_BhcMouseReturnTime", "Return to Follow Road After (sec) On No Input <font size=\"16\">Hold Free Look for instant road return :<\/font>", 16], ["option_BhcCtrlFreeLook", "Hold 'Walk': Free Look: <font size=\"16\">KB: Toggle Walk/Run<\/font>", 28], ["option_BhcHeading3", "Mouse & Keyboard", 26], ["option_BhcSepRiding", "QoL // Immersion // Optional", 43], ["option_BhcHoldGallop", "Hold Sprint to Gallop: (Releasing returns to prior gait):", 22], ["option_BhcBrake", "Brake: Hold Left Stick:", 32], ["option_BhcRsSlower", "Press & Hold Right Stick 0.3s : Auto-Walk / One Gait Slower", 30], ["option_BhcRsFullStop", "Press & Hold Right Stick 0.6s Full Slow Stop", 31], ["option_BhcHeading6", "Controller", 29], ["option_BhcLetGo", "When Grace Timer Ends, Roach:", 40], ["preset_value_BhcLetGo_0", "Slow Down to a Stop", 41], ["preset_value_BhcLetGo_1", "Stop at Once", 42], ["option_BhcSteerRelative", "Directional input - Roach Steers Relative to:", 23], ["preset_value_BhcSteerRelative_0", "Camera", 24], ["preset_value_BhcSteerRelative_1", "Horse", 25], ["option_BhcSettlementGallop", "Gallop in Settlements", 44], ["option_BhcSepVoice", "Geralt's Vocal Cues - \"WHOA THERE, ROACH\"", 45], ["option_BhcVoiceFreq", "Vocal Cues Frequency <font size=\"16\">chance per start or slowdown/10s<\/font>", 46], ["preset_value_BhcVoiceFreq_0", "Vanilla - 100%", 47], ["preset_value_BhcVoiceFreq_1", "Less - 50%", 48], ["preset_value_BhcVoiceFreq_2", "Infrequent - 25%", 49], ["preset_value_BhcVoiceFreq_3", "Rare - 10%", 50], ["preset_value_BhcVoiceFreq_4", "Never - 0%", 51], ["option_BhcPromptsEnabled", "On-Screen Contextual Button Prompts:", 12], ["option_BhcHeading2", "Core Settings & Control", 10], ["panel_betterhorsecontrols", "Better Horse Controls", 1], ["panel_qolimmersion", "QoL & Immersion", 4], ["preset_Mods_betterhorsecontrols_corecontrols", "Preset", 17], ["preset_value_BhcKeyboard", "Keyboard", 18], ["preset_value_BhcController2", "Controller", 19], ["preset_Mods_betterhorsecontrols_roachfinetuning", "Preset", 52], ["preset_value_BhcVanilla", "Vanilla", 53], ["preset_value_BhcTiring", "Tiring", 54], ["preset_value_BhcHarsh", "Harsh", 55], ["preset_value_BhcBrutal", "Brutal", 56], ["panel_roachfinetuning", "Roach Finetuning", 5], ["option_BhcSepStamina", "Stamina", 57], ["option_BhcSprintDrain", "Sprint Stamina Drain (x vanilla) <font size=\"16\">1 = vanilla, 0 = infinite stamina<\/font>", 58], ["option_BhcRecoveryDelay", "Recovery Delay After Sprinting (sec) <font size=\"16\">1 = vanilla, delay stamina refill<\/font>", 60], ["option_BhcExhaustLockout", "Exhaustion Lockout (sec) <font size=\"16\">3 = vanilla<\/font>", 61], ["option_BhcLockoutPercent", "Lockout Ends At Stamina (%) <font size=\"16\">0 = off, turn off Lockout timer above to use this<\/font>", 62], ["option_BhcRecoveryRate", "Stamina Recovery Speed (x vanilla) <font size=\"16\">1 = vanilla<\/font>", 59], ["panel_CoreFunctions", "Core Functions", 2], ["panel_corecontrols", "Core Controls", 3], ["bhc_prompt_auto_canter", "Auto-Canter", 63], ["bhc_prompt_canter", "Canter", 64], ["bhc_prompt_gallop", "Gallop", 65], ["bhc_prompt_auto_walk", "Auto-Walk", 66], ["bhc_prompt_faster", "Faster", 67], ["bhc_prompt_slower", "Slower", 68], ["bhc_prompt_free_look", "Free Look", 69], ["bhc_prompt_mouse_steering", "Mouse Steering", 70], ["bhc_prompt_stop", "Stop", 71], ["bhc_prompt_full_stop", "Slow Stop", 72]], "pages": [{"id": "menutitles", "title": "Menu titles (where the mod appears in the Mods list)", "keys": ["panel_Mods", "panel_betterhorsecontrols", "panel_CoreFunctions", "panel_corecontrols", "panel_qolimmersion", "panel_roachfinetuning"], "image": ""}, {"id": "corefunctions", "title": "Core Functions", "keys": ["preset_Mods_betterhorsecontrols_CoreFunctions", "preset_value_BhcDefault", "option_BhcHeading5", "option_BhcEnabled", "option_BhcHeading2", "option_BhcHandsOff", "option_BhcPromptsEnabled", "option_BhcFollowRoads", "option_BhcFollowRoadsSlow", "option_BhcMouseSteering", "option_BhcMouseReturnTime"], "image": ""}, {"id": "controls", "title": "Core Controls", "keys": ["preset_Mods_betterhorsecontrols_corecontrols", "preset_value_BhcKeyboard", "preset_value_BhcController2", "option_BhcHeading1", "option_BhcTapAutoCanter", "option_BhcHoldGallop", "option_BhcSteerRelative", "preset_value_BhcSteerRelative_0", "preset_value_BhcSteerRelative_1", "option_BhcHeading3", "option_BhcCtrlAutoWalk", "option_BhcCtrlFreeLook", "option_BhcHeading6", "option_BhcRsSlower", "option_BhcRsFullStop", "option_BhcBrake", "option_BhcHeading4", "option_BhcEndKeys", "preset_value_BhcEndKeys_0", "preset_value_BhcEndKeys_1", "preset_value_BhcEndKeys_2", "preset_value_BhcEndKeys_3", "option_BhcReleaseGrace", "option_BhcLetGo", "preset_value_BhcLetGo_0", "preset_value_BhcLetGo_1"], "image": ""}, {"id": "qolimmersion", "title": "QoL & Immersion", "keys": ["option_BhcSepRiding", "option_BhcSettlementGallop", "option_BhcSepVoice", "option_BhcVoiceFreq", "preset_value_BhcVoiceFreq_0", "preset_value_BhcVoiceFreq_1", "preset_value_BhcVoiceFreq_2", "preset_value_BhcVoiceFreq_3", "preset_value_BhcVoiceFreq_4"], "image": ""}, {"id": "roachfinetuning", "title": "Roach Finetuning", "keys": ["preset_Mods_betterhorsecontrols_roachfinetuning", "preset_value_BhcVanilla", "preset_value_BhcTiring", "preset_value_BhcHarsh", "preset_value_BhcBrutal", "option_BhcSepStamina", "option_BhcSprintDrain", "option_BhcRecoveryRate", "option_BhcRecoveryDelay", "option_BhcExhaustLockout", "option_BhcLockoutPercent"], "image": ""}, {"id": "other", "title": "Other text (shown in game, not in the menu)", "keys": ["bhc_prompt_auto_canter", "bhc_prompt_canter", "bhc_prompt_gallop", "bhc_prompt_auto_walk", "bhc_prompt_faster", "bhc_prompt_slower", "bhc_prompt_free_look", "bhc_prompt_mouse_steering", "bhc_prompt_stop", "bhc_prompt_full_stop"], "image": ""}]}, {"id": "MeasuredMeditation", "name": "Measured Meditation", "version": "1.0.0", "rows": [["panel_Mods", "Mods", null], ["panel_MeasuredMeditation", "Measured Meditation", 1], ["preset_Mods_MeasuredMeditation", "Preset", 2], ["preset_value_MmDefault", "Default", 3], ["option_MmEnabled", "Heal on Blood and Broken Bones / Death March", 4], ["option_MmHealPerHour", "Health Healed per Hour Meditated (%)", 5]], "pages": [{"id": "menutitles", "title": "Menu titles (where the mod appears in the Mods list)", "keys": ["panel_Mods", "panel_MeasuredMeditation"], "image": ""}, {"id": "MeasuredMeditation", "title": "Measured Meditation", "keys": ["preset_Mods_MeasuredMeditation", "preset_value_MmDefault", "option_MmEnabled", "option_MmHealPerHour"], "image": ""}]}], "terms": [["Roach", "Geralt's horse"], ["Gallop", "horse speed"], ["Canter", "horse speed"], ["Trot", "horse speed"], ["Walk", "horse speed"], ["Sprint", "the sprint action / key name"], ["Stamina", ""], ["Health", ""], ["Aard", "sign"], ["Igni", "sign"], ["Yrden", "sign"], ["Quen", "sign"], ["Axii", "sign"], ["Meditation", ""], ["Blood and Broken Bones", "difficulty level"], ["Death March", "difficulty level"], ["Preset", ""], ["Default", ""], ["Mods", "the Options > Mods menu"]], "contact": "Paste the CSV text on pastebin.com (set Paste Exposure to Unlisted) and post the link as a comment on the mod's Nexus page, or attach the downloaded file there. Thank you!"}</script>
 <script>
 "use strict";
 const DATA = JSON.parse(document.getElementById("data").textContent);
@@ -110,9 +124,22 @@ function render() {
   mod = DATA.mods[+modSel.value]; lang = langSel.value;
   try { vals = JSON.parse(localStorage.getItem(store()) || "{}"); } catch (e) { vals = {}; }
   rowsEl.replaceChildren();
-  mod.rows.forEach(([key, en]) => {
+  const byKey = {}; mod.rows.forEach(r => byKey[r[0]] = r);
+  mod.pages.forEach(pg => {
+    const h = document.createElement("h2"); h.textContent = pg.title; rowsEl.append(h);
+    if (pg.image) {
+      const im = document.createElement("img"); im.src = pg.image; im.loading = "lazy"; im.alt = "Screenshot of the menu page " + pg.title;
+      const cap = document.createElement("p"); cap.className = "sub"; cap.textContent = "The numbers on the picture match the numbers below. A row without a number on the picture appears only when you open a dropdown or is not visible in this view.";
+      rowsEl.append(im, cap);
+    }
+    pg.keys.forEach(key => addRow(byKey[key]));
+  });
+  stats();
+}
+function addRow([key, en, num]) {
+  {
     const row = document.createElement("div"); row.className = "row";
-    const k = document.createElement("div"); k.className = "kind"; k.textContent = kind(key);
+    const k = document.createElement("div"); k.className = "kind"; k.textContent = (num ? "[" + num + "]  " : "") + kind(key);
     const e = document.createElement("div"); e.className = "en"; e.textContent = en;
     const t = document.createElement("textarea"); t.rows = 1; t.value = vals[key] || ""; t.lang = BCP[lang] || lang;
     const meta = document.createElement("div"); meta.className = "meta";
@@ -126,8 +153,7 @@ function render() {
     t.addEventListener("input", () => { vals[key] = t.value; upd(); stats(); save(); });
     upd();
     row.append(k, e, t, meta); rowsEl.append(row);
-  });
-  stats();
+  }
 }
 const q = s => '"' + s.replace(/"/g, '""') + '"';
 const csv = () => ["key,english,translation"].concat(mod.rows.map(([k, en]) => [q(k), q(en), q((vals[k] || "").trim())].join(","))).join("\n") + "\n";
@@ -164,6 +190,32 @@ $("file").onchange = async ev => {
   save(); render(); ev.target.value = ""; alert(n + " translations loaded.");
 };
 $("clr").onclick = () => { if (confirm("Delete everything you typed for this mod and language?")) { vals = {}; save(); render(); } };
+let tvals = {};
+const tstore = () => "w3tr:terms:" + lang;
+function renderTerms() {
+  try { tvals = JSON.parse(localStorage.getItem(tstore()) || "{}"); } catch (e) { tvals = {}; }
+  const box = $("terms"); box.replaceChildren();
+  DATA.terms.forEach(([en, note]) => {
+    const row = document.createElement("div"); row.className = "row";
+    const k = document.createElement("div"); k.className = "kind"; k.textContent = note || "term";
+    const e = document.createElement("div"); e.className = "en"; e.textContent = en;
+    const t = document.createElement("input"); t.type = "text"; t.value = tvals[en] || ""; t.lang = BCP[lang] || lang; t.style.width = "100%";
+    t.className = "term"; t.addEventListener("input", () => { tvals[en] = t.value; try { localStorage.setItem(tstore(), JSON.stringify(tvals)); } catch (x) {} });
+    row.append(k, e, t); box.append(row);
+  });
+}
+const tcsv = () => ["english,translation,note"].concat(DATA.terms.filter(([en]) => (tvals[en] || "").trim()).map(([en, note]) => [q(en), q(tvals[en].trim()), q(note || "")].join(","))).join("\n") + "\n";
+$("tdl").onclick = () => {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["﻿" + tcsv()], {type: "text/csv;charset=utf-8"}));
+  a.download = "glossary-" + lang + ".csv"; document.body.append(a); a.click(); a.remove();
+};
+$("tcp").onclick = async () => {
+  try { await navigator.clipboard.writeText(tcsv()); alert("Copied. Paste it into your message or a paste site."); }
+  catch (e) { const t = document.createElement("textarea"); t.value = tcsv(); document.body.append(t); t.select(); document.execCommand("copy"); t.remove(); alert("Copied. Paste it into your message or a paste site."); }
+};
+const baseRender = render;
+render = function () { baseRender(); renderTerms(); };
 modSel.onchange = langSel.onchange = render;
 render();
 </script>
