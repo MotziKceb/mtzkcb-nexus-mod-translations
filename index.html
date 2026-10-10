@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Witcher 3 mod menu translations</title>
+<style>
+:root{--bg:#faf8f4;--fg:#1f1b16;--mut:#6b6358;--card:#fff;--line:#ddd5c8;--gold:#8a6a1f;--ok:#2f7d3a;--warn:#b25a00}
+@media (prefers-color-scheme:dark){:root{--bg:#16130f;--fg:#ece6da;--mut:#a39a8a;--card:#1f1b16;--line:#3a342b;--gold:#d4a94a;--ok:#6cc27a;--warn:#e69a3d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:860px;margin:0 auto;padding:24px 16px 80px}
+h1{font-size:1.5rem;margin:0 0 4px;color:var(--gold)}
+p.sub{color:var(--mut);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px}
+.pick{display:flex;gap:12px;flex-wrap:wrap}
+.pick label{flex:1 1 220px;display:flex;flex-direction:column;font-size:.85rem;color:var(--mut);gap:4px}
+select,input,textarea,button{font:inherit;color:inherit}
+select,textarea{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px}
+button{background:var(--gold);color:#fff;border:0;border-radius:6px;padding:9px 14px;cursor:pointer}
+button.alt{background:transparent;color:var(--fg);border:1px solid var(--line)}
+details{margin-top:8px}summary{cursor:pointer;color:var(--gold)}
+.row{border-top:1px solid var(--line);padding:12px 0}
+.row:first-child{border-top:0}
+.kind{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+.en{margin:2px 0 6px;font-weight:600;white-space:pre-wrap;word-break:break-word}
+textarea{width:100%;min-height:42px;resize:vertical}
+.meta{font-size:.78rem;color:var(--mut);display:flex;justify-content:space-between;gap:12px}
+.meta .w{color:var(--warn)}
+.bar{position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:2;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:16px}
+.prog{flex:1 1 160px;font-size:.9rem}
+.prog i{display:block;height:6px;background:var(--line);border-radius:3px;margin-top:4px;overflow:hidden}
+.prog b{display:block;height:100%;background:var(--ok);width:0}
+.hidden{display:none}
+code{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px}
+</style>
+</head>
+<body>
+<main>
+<h1>Translate a Witcher 3 mod menu</h1>
+<p class="sub">Thank you for helping. Nothing is uploaded: everything you type stays in your browser until you download the file.</p>
+
+<div class="card">
+  <div class="pick">
+    <label>Mod <select id="mod"></select></label>
+    <label>Your language <select id="lang"></select></label>
+  </div>
+  <details>
+    <summary>How this works (30 seconds)</summary>
+    <ul>
+      <li>Each box is one line of the mod menu. The English is shown above it. Type your translation underneath.</li>
+      <li>Leave a box empty to keep the English for that line. You do not have to do them all.</li>
+      <li>Keep anything in angle brackets exactly as it is, for example <code>&lt;font size="16"&gt;</code>. Keep characters like <code>%</code> and <code>|</code> too.</li>
+      <li>Menu space is limited. If a box shows an orange warning, your text is much longer than the English and may be cut off in game; shorten it if you can.</li>
+      <li>Your work is saved in this browser automatically. When finished, press <b>Download CSV</b> (or <b>Copy CSV text</b>) and send it to us (see the bottom of the page).</li>
+    </ul>
+  </details>
+</div>
+
+<div class="bar">
+  <div class="prog"><span id="count"></span><i><b id="fill"></b></i></div>
+  <button id="dl">Download CSV</button>
+  <button id="cp" class="alt">Copy CSV text</button>
+  <button id="imp" class="alt">Load a CSV</button>
+  <button id="clr" class="alt">Clear</button>
+  <input id="file" type="file" accept=".csv,text/csv" class="hidden">
+</div>
+
+<div class="card" id="rows"></div>
+
+<div class="card">
+  <b>Sending it back</b>
+  <p id="contact"></p>
+  <p class="sub">Please include the mod name and your language. If you want to be credited, say how your name should be written.</p>
+</div>
+</main>
+
+<script id="data" type="application/json">{"mods": [{"id": "BetterHorseControls", "name": "Better Horse Controls", "version": "1.3.2", "rows": [["panel_Mods", "Mods"], ["preset_Mods_betterhorsecontrols_CoreFunctions", "Preset"], ["preset_value_BhcDefault", "Default"], ["option_BhcEnabled", "Mod: Better Horse Controls <font size=\"16\">Vanilla // Better Horse Controls :<\/font>"], ["option_BhcHeading5", "BHC 1.3.2"], ["option_BhcHandsOff", "Hands-Off Riding <font size=\"16\">Pinky Rescue Off // On:<\/font>"], ["option_BhcHeading1", "Mouse & Keyboard + Controller"], ["option_BhcTapAutoCanter", "Tap Sprint to Auto-Canter: <font size=\"16\">KB: \"Gallop/Canter\"<\/font>"], ["option_BhcCtrlAutoWalk", "Press & Hold 'Walk' 0.3 s to Auto-Walk: <font size=\"16\">KB: Toggle Walk/Run<\/font>"], ["option_BhcFollowRoads", "Follow Roads at Canter and Gallop:"], ["option_BhcFollowRoadsSlow", "Follow Roads at Walk and Trot:"], ["option_BhcEndKeys", "Selected Input Acts As Hands-Off Cancel When Released <font size=\"16\">(not when pressed) :<\/font>"], ["preset_value_BhcEndKeys_0", "None"], ["preset_value_BhcEndKeys_1", "'Movement - Down'"], ["preset_value_BhcEndKeys_2", "Any 'Movement' Bind"], ["preset_value_BhcEndKeys_3", "'Movement - Up'"], ["option_BhcHeading4", "Alternative Controls"], ["option_BhcReleaseGrace", "Release Detection Grace (sec) <font size=\"16\">Repeated directional input refreshes :<\/font>"], ["option_BhcMouseSteering", "Mouse Steering / \"Comfort\" Steering <font size=\"16\">(Left-Hand-Down-Pants Steering) :<\/font>"], ["option_BhcMouseReturnTime", "Return to Follow Road After (sec) On No Input <font size=\"16\">Hold Free Look for instant road return :<\/font>"], ["option_BhcCtrlFreeLook", "Hold 'Walk': Free Look: <font size=\"16\">KB: Toggle Walk/Run<\/font>"], ["option_BhcHeading3", "Mouse & Keyboard"], ["option_BhcSepRiding", "QoL // Immersion // Optional"], ["option_BhcHoldGallop", "Hold Sprint to Gallop: (Releasing returns to prior gait):"], ["option_BhcBrake", "Brake: Hold Left Stick:"], ["option_BhcRsSlower", "Press & Hold Right Stick 0.3s : Auto-Walk / One Gait Slower"], ["option_BhcRsFullStop", "Press & Hold Right Stick 0.6s Full Slow Stop"], ["option_BhcHeading6", "Controller"], ["option_BhcLetGo", "When Grace Timer Ends, Roach:"], ["preset_value_BhcLetGo_0", "Slow Down to a Stop"], ["preset_value_BhcLetGo_1", "Stop at Once"], ["option_BhcSteerRelative", "Directional input - Roach Steers Relative to:"], ["preset_value_BhcSteerRelative_0", "Camera"], ["preset_value_BhcSteerRelative_1", "Horse"], ["option_BhcSettlementGallop", "Gallop in Settlements"], ["option_BhcSepVoice", "Geralt's Vocal Cues - \"WHOA THERE, ROACH\""], ["option_BhcVoiceFreq", "Vocal Cues Frequency <font size=\"16\">chance per start or slowdown/10s<\/font>"], ["preset_value_BhcVoiceFreq_0", "Vanilla - 100%"], ["preset_value_BhcVoiceFreq_1", "Less - 50%"], ["preset_value_BhcVoiceFreq_2", "Infrequent - 25%"], ["preset_value_BhcVoiceFreq_3", "Rare - 10%"], ["preset_value_BhcVoiceFreq_4", "Never - 0%"], ["option_BhcPromptsEnabled", "On-Screen Contextual Button Prompts:"], ["option_BhcHeading2", "Core Settings & Control"], ["panel_betterhorsecontrols", "Better Horse Controls"], ["panel_qolimmersion", "QoL & Immersion"], ["preset_Mods_betterhorsecontrols_corecontrols", "Preset"], ["preset_value_BhcKeyboard", "Keyboard"], ["preset_value_BhcController2", "Controller"], ["preset_Mods_betterhorsecontrols_roachfinetuning", "Preset"], ["preset_value_BhcVanilla", "Vanilla"], ["preset_value_BhcTiring", "Tiring"], ["preset_value_BhcHarsh", "Harsh"], ["preset_value_BhcBrutal", "Brutal"], ["panel_roachfinetuning", "Roach Finetuning"], ["option_BhcSepStamina", "Stamina"], ["option_BhcSprintDrain", "Sprint Stamina Drain (x vanilla) <font size=\"16\">1 = vanilla, 0 = infinite stamina<\/font>"], ["option_BhcRecoveryDelay", "Recovery Delay After Sprinting (sec) <font size=\"16\">1 = vanilla, delay stamina refill<\/font>"], ["option_BhcExhaustLockout", "Exhaustion Lockout (sec) <font size=\"16\">3 = vanilla<\/font>"], ["option_BhcLockoutPercent", "Lockout Ends At Stamina (%) <font size=\"16\">0 = off, turn off Lockout timer above to use this<\/font>"], ["option_BhcRecoveryRate", "Stamina Recovery Speed (x vanilla) <font size=\"16\">1 = vanilla<\/font>"], ["panel_CoreFunctions", "Core Functions"], ["panel_corecontrols", "Core Controls"], ["bhc_prompt_auto_canter", "Auto-Canter"], ["bhc_prompt_canter", "Canter"], ["bhc_prompt_gallop", "Gallop"], ["bhc_prompt_auto_walk", "Auto-Walk"], ["bhc_prompt_faster", "Faster"], ["bhc_prompt_slower", "Slower"], ["bhc_prompt_free_look", "Free Look"], ["bhc_prompt_mouse_steering", "Mouse Steering"], ["bhc_prompt_stop", "Stop"], ["bhc_prompt_full_stop", "Slow Stop"]]}, {"id": "MeasuredMeditation", "name": "Measured Meditation", "version": "1.0.0", "rows": [["panel_Mods", "Mods"], ["panel_MeasuredMeditation", "Measured Meditation"], ["preset_Mods_MeasuredMeditation", "Preset"], ["preset_value_MmDefault", "Default"], ["option_MmEnabled", "Heal on Blood and Broken Bones / Death March"], ["option_MmHealPerHour", "Health Healed per Hour Meditated (%)"]]}], "contact": "Paste the CSV text on pastebin.com (set Paste Exposure to Unlisted) and post the link as a comment on the mod's Nexus page, or attach the downloaded file there. Thank you!"}</script>
+<script>
+"use strict";
+const DATA = JSON.parse(document.getElementById("data").textContent);
+const LANGS = [["ar","Arabic (ar)"],["br","Português do Brasil (br)"],["cn","Chinese, Simplified (cn)"],["zh","Chinese, Traditional (zh)"],["cz","Čeština (cz)"],["de","Deutsch (de)"],["es","Español (es)"],["esmx","Español de Latinoamérica (esmx)"],["fr","Français (fr)"],["hu","Magyar (hu)"],["it","Italiano (it)"],["jp","Japanese (jp)"],["kr","Korean (kr)"],["pl","Polski (pl)"],["ru","Русский (ru)"],["tr","Türkçe (tr)"],["ua","Українська (ua)"]];
+const BCP = {cn:"zh-Hans", zh:"zh-Hant", esmx:"es-MX", br:"pt-BR", jp:"ja", kr:"ko", cz:"cs", ua:"uk"};
+const $ = id => document.getElementById(id);
+const modSel = $("mod"), langSel = $("lang"), rowsEl = $("rows");
+let mod, lang, vals = {};
+
+DATA.mods.forEach((m, i) => modSel.add(new Option(m.name + " " + m.version, i)));
+LANGS.forEach(([c, n]) => langSel.add(new Option(n, c)));
+$("contact").textContent = DATA.contact;
+try { const s = JSON.parse(localStorage.getItem("w3tr:last") || "{}"); if (s.m < DATA.mods.length) modSel.value = s.m; if (s.l) langSel.value = s.l; } catch (e) {}
+
+const store = () => "w3tr:" + mod.id + ":" + mod.version + ":" + lang;
+function save() { try { localStorage.setItem(store(), JSON.stringify(vals)); localStorage.setItem("w3tr:last", JSON.stringify({m: +modSel.value, l: lang})); } catch (e) {} }
+function kind(k) {
+  if (k.startsWith("panel_")) return "Page / section title";
+  if (k.startsWith("preset_value_")) return "Choice or preset button";
+  if (k.startsWith("preset_")) return "Preset row label";
+  if (k.startsWith("option_")) return "Menu option";
+  return "Text";
+}
+function stats() {
+  const n = mod.rows.filter(r => (vals[r[0]] || "").trim()).length;
+  $("count").textContent = n + " of " + mod.rows.length + " translated";
+  $("fill").style.width = (100 * n / mod.rows.length) + "%";
+}
+function render() {
+  mod = DATA.mods[+modSel.value]; lang = langSel.value;
+  try { vals = JSON.parse(localStorage.getItem(store()) || "{}"); } catch (e) { vals = {}; }
+  rowsEl.replaceChildren();
+  mod.rows.forEach(([key, en]) => {
+    const row = document.createElement("div"); row.className = "row";
+    const k = document.createElement("div"); k.className = "kind"; k.textContent = kind(key);
+    const e = document.createElement("div"); e.className = "en"; e.textContent = en;
+    const t = document.createElement("textarea"); t.rows = 1; t.value = vals[key] || ""; t.lang = BCP[lang] || lang;
+    const meta = document.createElement("div"); meta.className = "meta";
+    const w = document.createElement("span"); const c = document.createElement("span");
+    meta.append(w, c);
+    const upd = () => {
+      c.textContent = t.value.length + " / " + en.length + " characters (English)";
+      const long = t.value.length > Math.max(en.length * 1.5, en.length + 8);
+      w.className = "w"; w.textContent = long ? "Much longer than the English, may be cut off in game" : "";
+    };
+    t.addEventListener("input", () => { vals[key] = t.value; upd(); stats(); save(); });
+    upd();
+    row.append(k, e, t, meta); rowsEl.append(row);
+  });
+  stats();
+}
+const q = s => '"' + s.replace(/"/g, '""') + '"';
+const csv = () => ["key,english,translation"].concat(mod.rows.map(([k, en]) => [q(k), q(en), q((vals[k] || "").trim())].join(","))).join("
+") + "
+";
+$("dl").onclick = () => {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["﻿" + csv()], {type: "text/csv;charset=utf-8"}));
+  a.download = mod.id + "-" + lang + ".csv"; document.body.append(a); a.click(); a.remove();
+};
+$("cp").onclick = async () => {
+  const text = csv();
+  try { await navigator.clipboard.writeText(text); alert("Copied. Paste it into your message or a paste site."); }
+  catch (e) { const t = document.createElement("textarea"); t.value = text; document.body.append(t); t.select(); document.execCommand("copy"); t.remove(); alert("Copied. Paste it into your message or a paste site."); }
+};
+function parseCsv(text) {
+  text = text.replace(/^﻿/, "");
+  const first = text.split("\n", 1)[0], d = first.split(";").length > first.split(",").length ? ";" : ",";
+  const rows = []; let row = [], cur = "", inq = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (inq) { if (ch === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else inq = false; } else cur += ch; }
+    else if (ch === '"') inq = true;
+    else if (ch === d) { row.push(cur); cur = ""; }
+    else if (ch === "\n") { row.push(cur.replace(/\r$/, "")); rows.push(row); row = []; cur = ""; }
+    else cur += ch;
+  }
+  if (cur || row.length) { row.push(cur); rows.push(row); }
+  return rows;
+}
+$("imp").onclick = () => $("file").click();
+$("file").onchange = async ev => {
+  const f = ev.target.files[0]; if (!f) return;
+  const rows = parseCsv(await f.text()), keys = new Set(mod.rows.map(r => r[0])); let n = 0;
+  rows.slice(1).forEach(r => { if (keys.has(r[0]) && (r[2] || "").trim()) { vals[r[0]] = r[2].trim(); n++; } });
+  save(); render(); ev.target.value = ""; alert(n + " translations loaded.");
+};
+$("clr").onclick = () => { if (confirm("Delete everything you typed for this mod and language?")) { vals = {}; save(); render(); } };
+modSel.onchange = langSel.onchange = render;
+render();
+</script>
+</body>
+</html>
