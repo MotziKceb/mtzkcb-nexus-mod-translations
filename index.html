@@ -130,12 +130,10 @@ function render() {
   stats();
 }
 const q = s => '"' + s.replace(/"/g, '""') + '"';
-const csv = () => ["key,english,translation"].concat(mod.rows.map(([k, en]) => [q(k), q(en), q((vals[k] || "").trim())].join(","))).join("
-") + "
-";
+const csv = () => ["key,english,translation"].concat(mod.rows.map(([k, en]) => [q(k), q(en), q((vals[k] || "").trim())].join(","))).join("\n") + "\n";
 $("dl").onclick = () => {
   const a = document.createElement("a");
-  a.href = URL.createObjectURL(new Blob(["﻿" + csv()], {type: "text/csv;charset=utf-8"}));
+  a.href = URL.createObjectURL(new Blob(["\ufeff" + csv()], {type: "text/csv;charset=utf-8"}));
   a.download = mod.id + "-" + lang + ".csv"; document.body.append(a); a.click(); a.remove();
 };
 $("cp").onclick = async () => {
@@ -144,7 +142,7 @@ $("cp").onclick = async () => {
   catch (e) { const t = document.createElement("textarea"); t.value = text; document.body.append(t); t.select(); document.execCommand("copy"); t.remove(); alert("Copied. Paste it into your message or a paste site."); }
 };
 function parseCsv(text) {
-  text = text.replace(/^﻿/, "");
+  text = text.replace(/^\ufeff/, "");
   const first = text.split("\n", 1)[0], d = first.split(";").length > first.split(",").length ? ";" : ",";
   const rows = []; let row = [], cur = "", inq = false;
   for (let i = 0; i < text.length; i++) {
